@@ -58,7 +58,7 @@ buttonEl.addEventListener("click", function () {
                     for (var i = 0; i < apiResults.daily.length; i++) {
                         forecastComplete += `
     <div class="card" style="width: 18rem;">
-                    <h2>${inputEl.value}</h2>
+                    <h2>${moment().add(i + 1, 'days').format("MMM Do YY")}</h2>
                     <img src="https://openweathermap.org/img/wn/${apiResults.daily[i].weather[0].icon}@2x.png" class="card-img-top" alt="...">
                     <h3 Temp:
   ${apiResults.daily[i].temp.max}</h3>
