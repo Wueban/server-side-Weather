@@ -6,6 +6,7 @@ var descriptionEl = document.querySelector(".description")
 var temperatureßEl = document.querySelector(".temperature")
 var humidityEl = document.querySelector(".humidity")
 var windEl = document.querySelector("wind")
+var city = [];
 
 
 
@@ -80,6 +81,32 @@ buttonEl.addEventListener("click", function () {
 
 })
 
+// local storage ]
+
+var localStorage = function () {
+    //get local storage
+    var saveCites = JSON.parse(localStorage.getElementById("city"))
+    console.log(localStorage);
+
+    // update the cities key in local storage
+
+    if (saveCites !== null) {
+        cities = saveCites
+    }
+}
+
+// save the cities that the user inputs 
+
+var savecities = function () {
+    localStorage.setItem("city", JSON.stringify(cities))
+    console.log(localStorage)
+}
+
+// show searched cities
+
+var citySearched = function(){
+    
+}
 
 
 
