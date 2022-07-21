@@ -39,6 +39,40 @@ buttonEl.addEventListener("click", function () {
                     return dataApi.json()
                 }).then(function (apiResults) {
                     console.log(apiResults)
+                    document.getElementById("current").innerHTML = `
+                    <div class="card" style="width: 18rem;">
+                    <h2>${inputEl.value}</h2>
+                    <img src="https://openweathermap.org/img/wn/${apiResults.current.weather[0].icon}@2x.png" class="card-img-top" alt="...">
+                    <h3 Temp:
+  ${apiResults.current.temp}</h3>
+  <div class="card-body">
+    <h5 class="card-title">Description:${apiResults.current.weather[0].description} </h5>
+    <p class="card-text">Humidity:${apiResults.current.humidity}</p>
+    <p class="card-text">Wind Speed:${apiResults.current.wind_speed}</p>
+    <p class="card-text">uvi:${apiResults.current.uvi}</p>
+  </div>
+</div>
+                    `
+
+                    var forecastComplete = "";
+                    for (var i = 0; i < apiResults.daily.length; i++) {
+                        forecastComplete += `
+    <div class="card" style="width: 18rem;">
+                    <h2>${inputEl.value}</h2>
+                    <img src="https://openweathermap.org/img/wn/${apiResults.daily[i].weather[0].icon}@2x.png" class="card-img-top" alt="...">
+                    <h3 Temp:
+  ${apiResults.daily[i].temp.max}</h3>
+  <div class="card-body">
+    <h5 class="card-title">Description:${apiResults.daily[i].weather[0].description} </h5>
+    <p class="card-text">Humidity:${apiResults.daily[i].humidity}</p>
+    <p class="card-text">Wind Speed:${apiResults.daily[i].wind_speed}</p>
+    <p class="card-text">uvi:${apiResults.daily[i].uvi}</p>
+  </div>
+</div>
+    `
+                    }
+                    document.getElementById('anyId').innerHTML = forecastComplete
+
                 })
             // }).catch(function(error){
             //     alert("wrong city Name!")
